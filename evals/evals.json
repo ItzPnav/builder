@@ -1,0 +1,60 @@
+{
+  "skill_name": "builder",
+  "evals": [
+    {
+      "id": 1,
+      "name": "bare-invoke-shows-menu",
+      "prompt": "/builder",
+      "expected_output": "The questionnaire shows exactly 6 options in the specified order. No document is generated and no builder inputs are requested yet.",
+      "files": [],
+      "assertions": [
+        "Questionnaire presented with exactly 6 options",
+        "Option 1 is the full pipeline, option 6 is agent rules",
+        "No document file was generated",
+        "Did not ask for idea/README/flowchart inside the menu question"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "named-prd-skips-menu",
+      "prompt": "ok so i want to build a habit tracker app called Streakly. idea: people drop habits after a week because there's no accountability, so you pair up with a buddy and both see each other's streaks; if one misses a day the other gets nudged to check in. flowchart: sign up -> pick habits -> invite buddy via link -> daily check-in -> streak updates -> missed day? -> buddy notified -> weekly recap email. stack: Next.js, Supabase (auth + postgres), Resend for email, maybe Vercel cron. make me a PRD",
+      "expected_output": "Skips the menu, loads prd-builder/SKILL.md, and writes a full PRD in that builder's structure with no bracket placeholders.",
+      "files": [],
+      "assertions": [
+        "No builder-selection questionnaire was shown",
+        "prd-builder/SKILL.md was opened and followed",
+        "Output title follows the format '[PRD] <Description>'",
+        "PRD contains Problem Alignment, Solution Summary, Scope & Capabilities, and Delivery/Risks sections",
+        "No '[...]' bracket placeholders remain",
+        "Assumptions are explicitly labeled"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "named-claude-md-skips-menu-and-followup",
+      "prompt": "make me a CLAUDE.md from my README:\n\n# QuickNote\n### A Chrome extension that saves highlighted text to local notes instantly\n\n## Overview\nQuickNote lets you highlight text on any page and save it to a local notes panel. No account, no server.\n\n## Tech Stack\n| Layer | Technology |\n|---|---|\n| Platform | Chrome Extension Manifest V3 |\n| UI | Vanilla JS + CSS |\n| Storage | chrome.storage.local |\n\n## Folder Structure\n```\nquicknote/\n  manifest.json\n  background.js\n  content.js\n  popup/\n    popup.html\n    popup.js\n    popup.css\n```\n\n## Security Notes\n- Never send note content to any remote server.\n- Never request the <all_urls> host permission beyond activeTab.\n",
+      "expected_output": "Skips the menu and the agent-rules follow-up, loads agent_project_rules_builder/SKILL.md, and writes a CLAUDE.md derived only from the README, with no leftover {PLACEHOLDER} tokens.",
+      "files": [],
+      "assertions": [
+        "No builder-selection questionnaire was shown",
+        "No 6a/6b follow-up question was asked",
+        "agent_project_rules_builder/SKILL.md was opened (not gemini-builder)",
+        "Output file is named CLAUDE.md",
+        "No literal {PLACEHOLDER} tokens remain",
+        "Includes the README's never-rules (no remote send, activeTab only)"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "vague-all-docs-routes-to-pipeline",
+      "prompt": "i want all the docs for my project, basically starting from just the idea. it's a CLI tool that turns screenshots of whiteboard diagrams into mermaid code. user choice from menu (if asked): Full pipeline",
+      "expected_output": "Shows the menu (or recognizes the pipeline intent), loads pipeline/SKILL.md, and asks once for the missing flowchart and tech stack. Generates nothing past stage 1 without the inputs and a checkpoint.",
+      "files": [],
+      "assertions": [
+        "pipeline/SKILL.md was opened",
+        "Asked for missing inputs (flowchart and/or tech stack) once, not repeatedly",
+        "Did not generate PIFS/README/agent-rules docs before stage 1 completes and a checkpoint occurs"
+      ]
+    }
+  ]
+}
