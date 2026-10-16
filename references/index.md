@@ -10,8 +10,8 @@ An explainer and link file. It describes the builders; it doesn't replace them.
 | PIFS | [SKILL.md](../../pifs-builder/SKILL.md) | Same 3 inputs (+ optional PRD.md) | PROJECT, FEATURES, SPEC, IMPLEMENTATION | Once, only if one of the 3 inputs is missing |
 | README | [SKILL.md](../../readme-builder/SKILL.md) | Project facts → fixed template | `README.md` | As needed to fill the template |
 | Project Describer | [SKILL.md](../../project-describer/SKILL.md) | Notes / abstract / spec | `<project>-project-description.md` | Yes, if source material is missing |
-| Agent Rules | [SKILL.md](../../agent_project_rules_builder/SKILL.md) | README.md only | Chosen rules file | Only to pick the target file |
-| Gemini Rules (legacy) | [SKILL.md](../../gemini-builder/SKILL.md) | README.md only | `GEMINI.md` | Never |
+| Agent Rules | [SKILL.md](../../agent_project_rules_builder/SKILL.md) | README.md (+ stylesheets for UI rules) | Chosen rules file | Only to pick the target file |
+| Gemini Rules (legacy) | [SKILL.md](../../gemini-builder/SKILL.md) | README.md (+ stylesheets for UI rules) | `GEMINI.md` | Never |
 | Pipeline | [SKILL.md](../pipeline/SKILL.md) | Idea + flowchart + stack, once | All of the above | Checkpoint after each stage |
 
 ## Pick by situation
@@ -30,7 +30,7 @@ An explainer and link file. It describes the builders; it doesn't replace them.
 - **6a vs 6b.** The Agent Rules Builder generalizes the Gemini builder: same extraction, plus a target-file step. Builder routes all named targets, including `GEMINI.md`, to 6a. 6b is only for an explicit request for the original Gemini builder.
 - **PRD vs PIFS.** They take the same inputs in a different voice. The PRD is product-manager voice; PIFS is senior-engineer voice. PIFS treats an existing PRD as the source of truth, so build the PRD first if you want both.
 - **README vs Project Describer.** The README is a strict GitHub template (badges, ASCII architecture, setup steps, no emoji). The describer is 5 prose sections for mixed readers. One doesn't replace the other.
-- **The README limits the rules file.** Both rules builders read only the README, so a weak README produces weak rules.
+- **The README limits the rules file.** Both rules builders read the README and any repository stylesheets, extracting full design tokens, theme cascades, micro-physics, and keyframe engines so UI rules reflect production reality.
 
 ## Notes
 
