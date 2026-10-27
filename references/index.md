@@ -6,12 +6,12 @@ An explainer and link file. It describes the builders; it doesn't replace them.
 
 | Builder | Link | Inputs | Output | Asks questions? |
 |---|---|---|---|---|
-| PRD | [SKILL.md](../../prd-builder/SKILL.md) | Idea + flowchart + tech stack | One PRD | Once, only if one of the 3 inputs is missing |
-| PIFS | [SKILL.md](../../pifs-builder/SKILL.md) | Same 3 inputs (+ optional PRD.md) | PROJECT, FEATURES, SPEC, IMPLEMENTATION | Once, only if one of the 3 inputs is missing |
-| README | [SKILL.md](../../readme-builder/SKILL.md) | Project facts → fixed template | `README.md` | As needed to fill the template |
-| Project Describer | [SKILL.md](../../project-describer/SKILL.md) | Notes / abstract / spec | `<project>-project-description.md` | Yes, if source material is missing |
-| Agent Rules | [SKILL.md](../../agent_project_rules_builder/SKILL.md) | README.md (+ stylesheets for UI rules) | Chosen rules file | Only to pick the target file |
-| Gemini Rules (legacy) | [SKILL.md](../../gemini-builder/SKILL.md) | README.md (+ stylesheets for UI rules) | `GEMINI.md` | Never |
+| PRD | [SKILL.md](./prd-builder/SKILL.md) | Idea + flowchart + tech stack | One PRD | Once, only if one of the 3 inputs is missing |
+| PIFS | [SKILL.md](./pifs-builder/SKILL.md) | Same 3 inputs (+ optional PRD.md) | PROJECT, FEATURES, SPEC, IMPLEMENTATION | Once, only if one of the 3 inputs is missing |
+| README | [SKILL.md](./readme-builder/SKILL.md) | Project facts → fixed template | `README.md` | As needed to fill the template |
+| Project Describer | [SKILL.md](./project-describer/SKILL.md) | Notes / abstract / spec | `<project>-project-description.md` | Yes, if source material is missing |
+| Agent Rules | [SKILL.md](./agent_project_rules_builder/SKILL.md) | README.md (+ stylesheets for UI rules) | Chosen rules file | Only to pick the target file |
+| Gemini Rules (legacy) | [SKILL.md](./gemini-builder/SKILL.md) | README.md (+ stylesheets for UI rules) | `GEMINI.md` | Never |
 | Pipeline | [SKILL.md](../pipeline/SKILL.md) | Idea + flowchart + stack, once | All of the above | Checkpoint after each stage |
 
 ## Pick by situation
